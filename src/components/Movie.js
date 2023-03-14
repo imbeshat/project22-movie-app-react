@@ -4,10 +4,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Movie = () => {
-	const apiKey = "5cf9af80";
-
 	const [search, setSearch] = useState("");
-	const [url, setUrl] = useState("https://www.omdbapi.com/?t=The%20Green%20Mile&apikey=5cf9af80");
+	const [url, setUrl] = useState(`https://www.omdbapi.com/?t=The%20Green%20Mile&apikey=${process.env.REACT_APP_MOVIE_API_KEY}`);
 	const [show, setShow] = useState(false);
 	const [movie, setMovie] = useState([]);
 
@@ -33,7 +31,7 @@ const Movie = () => {
 		if (search.trim() === "") {
 			toast.error("Please enter a Movie name!", {});
 		} else {
-			setUrl(`https://www.omdbapi.com/?t=${search}&apikey=${apiKey}`);
+			setUrl(`https://www.omdbapi.com/?t=${search}&apikey=${process.env.REACT_APP_MOVIE_API_KEY}`);
 			setSearch("");
 		}
 	};
